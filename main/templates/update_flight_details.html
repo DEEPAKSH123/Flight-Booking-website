@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Flight Schedules</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="main-heading">Flight Details</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Flight ID</th>
+                    <th>flight name</th>
+                    <th>unique code</th>
+                    <th>seats available</th>
+                    <th>total seats</th>
+    
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for schedule in flight_schedules %}
+                <tr>
+                    <td>{{ schedule[0] }}</td>
+                    <td>{{ schedule[1] }}</td>
+                    <td>{{ schedule[2] }}</td>
+                    <td>{{ schedule[3] }}</td>
+                    <td>{{ schedule[4] }}</td>
+
+                    <td>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal{{ loop.index }}">Edit</button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="editModal{{ loop.index }}" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="editModalLabel">Edit Schedule</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form method="POST" action="{{ url_for('update_flight_details') }}">
+                                            <input type="hidden" name="flight_id" value="{{ schedule[0] }}">
+                                            <div class="form-group">
+                                                <label for="flight_id">Flight ID:</label>
+                                                <input type="text" class="form-control" id="flight_id" name="flight_id" value="{{ schedule[0] }}" readonly>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="flight_name">Flight Name:</label>
+                                                <input type="text" class="form-control" id="flight_name" name="flight_name" value="{{ schedule[1] }}">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="unique_code">Unique code:</label>
+                                                <input type="text" class="form-control" id="unique_code" name="unique_code" value="{{ schedule[2] }}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="seats_available">Available seats:</label>
+                                                <input type="text" class="form-control" id="dseats_available" name="seats_available" value="{{ schedule[3] }}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="total_seats">Total Seats</label>
+                                                <input type="text" class="form-control" id="total_seats" name="total_seats" value="{{ schedule[4] }}">
+                                            </div>
+                                            
+                                            
+                                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

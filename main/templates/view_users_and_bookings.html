@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Users and Bookings</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+    overflow-y: auto; /* Always show vertical scrollbar */
+}
+
+        .main-content {
+            margin-left: 250px; /* Adjust this value to match the width of the sidebar */
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    
+
+    <div class="main-content">
+        <h1 class="main-heading">User Bookings</h1>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Source City</th>
+                    <th>Destination</th>
+                    <th>Date</th>
+                    <th>Departure Time</th>
+                    <th>Arrival Time</th>
+                    <th>Economic Class</th>
+                    <th>Flight Name</th>
+                    <th>Number of Tickets</th>
+                    <th>Total price</th>
+                    <!-- Add more table headers for other columns if needed -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for userbooking in userbookings %}
+                    <tr>
+                        <td>{{ userbooking[0] }}</td> <!-- ID -->
+                        <td>{{ userbooking[1] }}</td> <!-- Username -->
+                        <td>{{ userbooking[2] }}</td> <!-- Source City -->
+                        <td>{{ userbooking[3] }}</td> <!-- Destination -->
+                        <td>{{ userbooking[4] }}</td> <!-- Date -->
+                        <td>{{ userbooking[5] }}</td> <!-- Departure Time -->
+                        <td>{{ userbooking[6] }}</td> <!-- Arrival Time -->
+                        <td>{{ userbooking[7] }}</td> <!-- Economic Class -->
+                        <td>{{ userbooking[8] }}</td> <!-- Flight Name -->
+                        <td>{{ userbooking[9] }}</td> <!-- Number of Tickets -->
+                        <td>{{ userbooking[10] }}</td> <!-- Total price -->
+                        <!-- Add more table cells for other columns if needed -->
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

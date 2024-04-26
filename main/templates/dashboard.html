@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-image: url("{{ url_for('static', filename='background.jpg') }}");
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 800px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Adjust the opacity as needed */
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 4em; /* Adjust the font size as needed */
+            margin-bottom: 20px;
+            position: relative;
+            animation: slide-up 1s ease;
+        }
+
+        h1 span {
+            color: #4caf50;
+            position: relative;
+            top: -10px; /* Adjust the vertical position */
+            display: block;
+            font-size: 1.5em; /* Adjust the font size as needed */
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+
+        li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        li:last-child {
+            margin-right: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #333;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #e0e0e0;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            display: block;
+        }
+
+        a:hover {
+            background-color: #c0c0c0;
+        }
+
+        /* Media query for small screens */
+        @media screen and (max-width: 600px) {
+            li {
+                display: block;
+                margin: 10px auto;
+            }
+        }
+
+        @keyframes slide-up {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome, <span>{{ user.username }}</span></h1>
+        <ul>
+            <li><a href="{{ url_for('book_flights') }}">Book Flights</a></li>
+            <li><a href="{{ url_for('view_booked_tickets') }}">View Booked Tickets</a></li>
+            <li><a href="{{ url_for('provide_rating') }}">Provide Rating</a></li>
+            <li><a href="{{ url_for('home') }}">Log Out</a></li>
+        </ul>
+    </div>
+</body>
+</html>

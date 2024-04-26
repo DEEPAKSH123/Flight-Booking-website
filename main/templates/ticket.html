@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Ticket</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .flight-details {
+            margin-bottom: 20px;
+        }
+
+        .flight-details p {
+            margin: 5px 0;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="number"] {
+            padding: 8px;
+            margin-bottom: 10px;
+            width: 100px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Flight Ticket</h1>
+        <div class="flight-details">
+            <p><strong>Source City:</strong> {{ sourceCity }}</p>
+            <p><strong>Destination:</strong> {{ destination }}</p>
+            <p><strong>Date:</strong> {{ date }}</p>
+            <p><strong>Departure Time:</strong> {{ departureTime }}</p>
+            <p><strong>Arrival Time:</strong> {{ arrivalTime }}</p>
+            <p><strong>Economic Class:</strong> {{ economicClass }}</p>
+            <p><strong>Flight Name:</strong> {{ flightName }}</p>
+            <p><strong>Seats Available:</strong> {{ seatsAvailable }}</p>
+            <p><strong>Total Seats:</strong> {{ totalSeats }}</p>
+            <p><strong>Unique Code:</strong> {{ uniqueCode }}</p>
+            <p><strong>Price:</strong> {{ Price }}</p>
+            
+        </div>
+        <!-- Form to submit number of tickets and book the flight -->
+        <form action="/confirm_booking" method="post">
+            <input type="hidden" name="sourceCity" value="{{ sourceCity }}">
+            <input type="hidden" name="destination" value="{{ destination }}">
+            <input type="hidden" name="date" value="{{ date }}">
+            <input type="hidden" name="departureTime" value="{{ departureTime }}">
+            <input type="hidden" name="arrivalTime" value="{{ arrivalTime }}">
+            <input type="hidden" name="economicClass" value="{{ economicClass }}">
+            <input type="hidden" name="flightName" value="{{ flightName }}">
+            <input type="hidden" name="seatsAvailable" value="{{ seatsAvailable }}">
+            <input type="hidden" name="totalSeats" value="{{ totalSeats }}">
+            <input type="hidden" name="uniqueCode" value="{{ uniqueCode }}">
+            <input type="hidden" name="Price" value="{{ Price }}">
+            <label for="numTickets">Number of Tickets:</label>
+            <input type="number" id="numTickets" name="numTickets" required>
+            <button type="submit">Book</button>
+        </form>
+    </div>
+</body>
+</html>

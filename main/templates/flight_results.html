@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Search Results</title>
+    <style>
+        /* CSS styles for the table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid #ddd; /* Add a border around the table */
+            margin-bottom: 20px; /* Add some spacing below the table */
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd; /* Add a border below each table cell */
+        }
+
+        th {
+            background-color: #f2f2f2; /* Add a background color to header cells */
+        }
+
+        /* CSS styles for the "No flights found" message */
+        .no-flights {
+            font-style: italic;
+            color: #888;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Flight Search Results</h1>
+    <div>
+        {% if matched_flights %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Source City</th>
+                        <th>Destination</th>
+                        <th>Date</th>
+                        <th>Departure Time</th>
+                        <th>Arrival Time</th>
+                        <th>Economic Class</th>
+                        <th>Flight Name</th>
+                        <th>action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for flight_bookings in matched_flights %}
+                        <tr>
+                            <td>{{ flight_bookings[1] }}</td> <!-- Assuming source_city is at index 1 -->
+                            <td>{{ flight_bookings[2] }}</td> <!-- Assuming destination is at index 2 -->
+                            <td>{{ flight_bookings[3] }}</td> <!-- Assuming date is at index 3 -->
+                            <td>{{ flight_bookings[4] }}</td> <!-- Assuming departure_time is at index 4 -->
+                            <td>{{ flight_bookings[5] }}</td> <!-- Assuming arrival_time is at index 5 -->
+                            <td>{{ flight_bookings[6] }}</td> <!-- Assuming economic_class is at index 6 -->
+                            <td>{{ flight_bookings[7] }}</td>
+                            
+                            <td>
+                                <button class="book-button" onclick="bookFlight('{{ flight_bookings[1] }}', '{{ flight_bookings[2] }}', '{{ flight_bookings[3] }}', '{{ flight_bookings[4] }}', '{{ flight_bookings[5] }}', '{{ flight_bookings[6] }}', '{{ flight_bookings[7] }}', '{{ flight_bookings[9] }}', '{{ flight_bookings[10] }}', '{{ flight_bookings[11] }}','{{ flight_bookings[8] }}')">Book</button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p class="no-flights">No flights found for the selected criteria.</p>
+        {% endif %}
+    </div>
+    <script>
+       function bookFlight(sourceCity, destination, date, departureTime, arrivalTime, economicClass, flightName, seatsAvailable, totalSeats, uniqueCode,Price) {
+    // Redirect to the ticket.html page with flight details as URL parameters
+    window.location.href = "/ticket?sourceCity=" + sourceCity + "&destination=" + destination + "&date=" + date + "&departureTime=" + departureTime + "&arrivalTime=" + arrivalTime + "&economicClass=" + economicClass + "&flightName=" + flightName + "&seatsAvailable=" + seatsAvailable + "&totalSeats=" + totalSeats + "&uniqueCode=" + uniqueCode+"&Price=" + Price;
+}
+
+
+    </script>
+</body>
+</html>

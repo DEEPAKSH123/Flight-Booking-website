@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom CSS for styling */
+        body {
+            background-color: #f8f9fa;
+            padding-top: 50px; /* Add some top padding to give space for the navbar */
+        }
+        .container {
+            margin-top: 50px; /* Add margin-top for the container */
+        }
+        .card {
+            border: none; /* Remove default card border */
+        }
+        .main-heading {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #ff3419af; /* Bootstrap primary color */
+        }
+        body {
+    background-image: url("{{ url_for('static', filename='logo.jpg') }}"); /* Path to your background image */
+    background-size: cover; /* Cover the entire viewport */
+    background-position: top; /* Center the background image */
+    background-attachment: fixed; /* Fixed background */
+    padding-top: 170px; /* Add some top padding to give space for the navbar */
+}
+        .opinions {
+            margin-top: 50px;
+            text-align: center;
+        }
+        .about-us {
+            margin-top: 100px;
+            text-align: center;
+        }
+        .navbar-nav .nav-link {
+    color: #73d031 !important; /* Set navbar link text color to white */
+}
+
+/* Card body text color */
+.card-body {
+    color: #58d821; /* Set card body text color to dark gray for better readability */
+}
+
+/* Button text color */
+.btn-primary,
+.btn-success,
+.btn-info {
+    color: #fff; /* Set button text color to white */
+}
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="#">Flight Management System</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav ml-auto"> <!-- Align items to the right -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('admin_login') }}">Admin Login</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 class="main-heading">Flight Management System</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <a href="{{ url_for('signin') }}" class="btn btn-primary btn-lg btn-block">Sign In</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <a href="{{ url_for('signup') }}" class="btn btn-success btn-lg btn-block">Sign Up</a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="opinions">
+        <h2>What People Say About Us</h2>
+        <p>"Great website! Easy to use and very helpful."</p>
+        <p>"I love the design and functionality of this website."</p>
+        <p>"The best flight management system I've ever used. Highly recommended!"</p>
+    </div>
+
+    <div class="about-us">
+        <h2>About Us</h2>
+        <p>We are a team passionate about providing the best flight management solution to our users. Our mission is to make booking and managing flights easy and convenient for everyone.</p>
+    </div>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
